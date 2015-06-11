@@ -1,4 +1,10 @@
 /* jshint devel:true */
-var main = 'main';
-console.log('\'Allo \'Allo!');
-console.log(test);
+
+test = 'test';
+
+function isImplicitGlobal() {
+  return test === window.test;
+}
+
+(function(window) {
+})(window);
