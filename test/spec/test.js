@@ -17,7 +17,14 @@ describe('変数のスコープを知る', function() {
   it('クロージャスコープを確認する', function() {
     expect('changed').toBe(closureScope());
   });
+
   it('即時関数実行内の変数', function() {
     expect(undefined).toBe(globalOrLocal);
   });
+
+  it('即時実行関数内からグローバルへ紐付け', function() {
+    expect(false).toBe(immediatelyVariable());
+    expect(true).toBe(checkImmediatelyGlobal());
+  });
+
 });

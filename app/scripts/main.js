@@ -1,6 +1,7 @@
 /* jshint devel:true */
 'use strict';
 
+var globalOrLocal;
 var test = 'test';
 
 function globalScope() {
@@ -37,6 +38,15 @@ function closureScope() {
   return variable;
 }
 
-(function() {
+(function(window) {
   var globalOrLocal = 'globalOrLocal';
-})();
+  window.immediatelyVariable = 'immediatelyVariable';
+})(window);
+
+function immediatelyVariable() {
+  return _.isUndefined(immediatelyVariable);
+}
+
+function checkImmediatelyGlobal() {
+  return immediatelyVariable === window.immediatelyVariable;
+}
