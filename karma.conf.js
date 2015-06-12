@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'dist/scripts/**/vendor.js',
-      'dist/scripts/**/plugin.js',
+      'dist/scripts/**/plugins.js',
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
     ],
@@ -30,7 +30,13 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {},
+    preprocessors: {
+      'app/scripts/**/*.js': ['jshint']
+    },
+
+    jshintPreprocessor: {
+      'jshintrc': './.jshintrc'
+    },
 
 
     // test results reporter to use
