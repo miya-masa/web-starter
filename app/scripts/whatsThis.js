@@ -1,10 +1,10 @@
-(function(window, $) {
+(function(window) {
+  'use strict';
 
-  $(function() {
+  var app = {};
 
-    $('.js-pushMe').on('click', function() {
-      $('.js-target').append($('<div>').text('pushMe'));
-    });
-  });
-
-})(window, jQuery);
+  app.whatsThis = function() {
+    return this;
+  };
+  window.app = app;
+})(window);
