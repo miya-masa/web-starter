@@ -1,7 +1,6 @@
 (function(window) {
   'use strict';
-
-  var app = {};
+  var app = window.app || {};
 
   app.whatsThis = function() {
     return this;

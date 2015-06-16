@@ -1,6 +1,6 @@
 (function(window) {
   'use strict';
-  var app = {};
+  var app = window.app || {};
   //カウンタを実装する
   app.getCounter = function() {
     var num = 0;
