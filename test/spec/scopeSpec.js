@@ -27,4 +27,14 @@ describe('変数のスコープを知る', function() {
     expect(true).toBe(checkImmediatelyGlobal());
   });
 
+  it('ホイスティング', function() {
+    var fn = function(variable) {
+      expect(variable).toBe(undefined);
+      var variable = 'innerVariable';
+      console.log(variable);
+      expect(variable).toBe('innerVariable');
+    };
+    fn('variable');
+  });
+
 });
