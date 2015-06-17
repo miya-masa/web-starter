@@ -2,34 +2,45 @@
 describe('変数のスコープを知る', function() {
   'use strict';
   it('グローバルスコープを確認する', function() {
-    expect(false).toBe(globalScope());
-    expect(false).toBe(otherGlobalScope());
+    expect(globalScope()).toBe(false);
+    expect(otherGlobalScope()).toBe(false);
   });
 
   it('暗黙グローバルオブジェクトを確認する', function() {
-    expect(true).toBe(implicitGlobalObject());
+    expect(implicitGlobalObject()).toBe(true);
   });
 
   it('ローカルスコープを確認する', function() {
-    expect('variable').toBe(localScope());
+    expect(localScope()).toBe('variable');
   });
 
   it('クロージャスコープを確認する', function() {
-    expect('changed').toBe(closureScope());
+    expect(closureScope()).toBe('changed');
   });
 
   it('即時関数実行内の変数', function() {
-    expect(undefined).toBe(globalOrLocal);
+    expect(globalOrLocal).toBe(undefined);
   });
 
   it('即時実行関数内からグローバルへ紐付け', function() {
-    expect(false).toBe(getImmediatelyVariable());
-    expect(true).toBe(checkImmediatelyGlobal());
+    expect(getImmediatelyVariable()).toBe(false);
+    expect(checkImmediatelyGlobal()).toBe(true);
   });
 
-  it('ホイスティング', function() {
-    var fn = function(variable) {
+  it('ホイスティングの確認', function() {
+    var variable = 'variable';
+    var fn = function() {
       expect(variable).toBe(undefined);
+      var variable = 'innerVariable';
+      console.log(variable);
+      expect(variable).toBe('innerVariable');
+    };
+    fn();
+  });
+
+  it('ホイスティングの確認', function() {
+    var fn = function(variable) {
+      expect(variable).toBe('variable');
       var variable = 'innerVariable';
       console.log(variable);
       expect(variable).toBe('innerVariable');
