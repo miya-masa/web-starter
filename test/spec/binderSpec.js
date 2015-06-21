@@ -2,26 +2,30 @@
 describe('実行コンテキストを強制する', function() {
   'use strict';
   it('bind関数', function() {
-    var targetFunction = function() {
-      return this.str || 'default';
-    }
+    var targetObj = {
+      str: 'targetObj',
+      targetFunction: function() {
+        return this.str;
+      }
+    };
     var obj1 = {
       str: 'obj1'
     };
+    obj1.targetFunction = targetObj.targetFunction
     var obj2 = {
       str: 'obj2'
     };
-    var obj3 = {
-      str: 'obj3'
-    };
 
-    var bindedObj1 = app.bind(obj1, targetFunction);
-    var bindedObj2 = app.bind(obj2, targetFunction);
-    var bindedObj3 = app.bind(obj3, targetFunction);
+    expect(obj1.targetFunction()).toBe('obj1');
+    expect(targetObj.targetFunction()).toBe('targetObj');
 
-    expect(bindedObj1()).toBe('obj1');
-    expect(bindedObj2()).toBe('obj2');
-    expect(bindedObj3()).toBe('obj3');
+    app.bind(targetObj, 'targetFunction');
+
+    obj2.targetFunction = targetObj.targetFunction;
+    expect(obj1.targetFunction()).toBe('obj1');
+    expect(obj2.targetFunction()).toBe('targetObj');
+    expect(targetObj.targetFunction()).toBe('targetObj');
+
   });
 
 });
