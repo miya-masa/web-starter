@@ -1,29 +1,29 @@
-/* global describe, it, expect */
+/* global describe, it, expect, app */
 describe('実行コンテキストを強制する', function() {
   'use strict';
   it('bind関数', function() {
     var targetObj = {
-      str: 'fix',
-      func: function() {
+      str: 'targetObj',
+      targetFunction: function() {
         return this.str;
       }
     };
     var obj1 = {
       str: 'obj1'
     };
-
     var obj2 = {
       str: 'obj2'
     };
 
-    var bindedObj = app.bind(targetObj, 'func');
-    obj1.func = bindedObj.func;
-    obj2.func = targetObj.func;
+    expect(obj1.targetFunction()).toBe('obj1');
+    expect(targetObj.targetFunction()).toBe('targetObj');
 
-    expect(targetObj.func()).toBe('fix');
-    expect(bindedObj.func()).toBe('fix');
-    expect(obj1.func()).toBe('fix');
-    expect(obj2.func()).toBe('obj2');
+    app.bind(targetObj, 'targetFunction');
+
+    obj2.targetFunction = targetObj.targetFunction;
+    expect(obj1.targetFunction()).toBe('obj1');
+    expect(obj2.targetFunction()).toBe('targetObj');
+    expect(targetObj.targetFunction()).toBe('targetObj');
   });
 
 });
