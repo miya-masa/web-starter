@@ -1,10 +1,11 @@
 (function(window) {
   'use strict';
   var app = window.app || {};
-  app.bind = function(context, fn) {
+  app.bind = function(context, name) {
+  app.bind
     return function() {
-      return fn.apply(context);
-    }
+      return context[name].apply(context);
+    };
   };
   window.app = app;
 })(window);
