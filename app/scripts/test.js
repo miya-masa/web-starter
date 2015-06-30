@@ -1,7 +1,7 @@
 (function(window) {
   'use strict';
   var app = window.app || {};
-  app.Test = function(name, maxNum) {
+  var Test = function(name, maxNum) {
     this.name = name;
     this.maxNum = maxNum;
   };
@@ -17,5 +17,6 @@
     console.log(sum);
   };
 
+  app.Test = Test;
   window.app = app;
 })(window);

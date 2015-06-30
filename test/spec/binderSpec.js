@@ -15,6 +15,8 @@ describe('実行コンテキストを強制する', function() {
       str: 'obj2'
     };
 
+    obj1.targetFunction = targetObj.targetFunction;
+
     expect(obj1.targetFunction()).toBe('obj1');
     expect(targetObj.targetFunction()).toBe('targetObj');
 
@@ -24,6 +26,13 @@ describe('実行コンテキストを強制する', function() {
     expect(obj1.targetFunction()).toBe('obj1');
     expect(obj2.targetFunction()).toBe('targetObj');
     expect(targetObj.targetFunction()).toBe('targetObj');
+  });
+
+  it('即時実行', function() {
+    (function () {
+      console.log('aaaaaaaaaaa');
+    });
+
   });
 
 });

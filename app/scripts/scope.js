@@ -1,7 +1,5 @@
-/* jshint undef: false, unused: false */
+/* jshint undef: false, unused: false, strict: false */
 /* global _,immediatelyVariable */
-
-'use strict';
 
 var globalOrLocal;
 var test = 'test';
