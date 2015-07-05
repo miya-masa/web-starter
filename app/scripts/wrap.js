@@ -3,8 +3,7 @@
   var app = window.app || {};
 
   app.wrap = function(context, fnName, wrapperFunc) {
-    app.bind(context, fnName);
-    return wrapperFunc.call(context, context[fnName]);
+    /* Question */
   };
 
   window.app = app;

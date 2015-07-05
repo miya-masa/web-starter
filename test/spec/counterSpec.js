@@ -1,5 +1,5 @@
 /* global describe, it, expect */
-describe('クロージャスコープを理解する', function() {
+xdescribe('クロージャスコープを理解する', function() {
   'use strict';
   it('カウンタの実装', function() {
     var counter = app.getCounter();

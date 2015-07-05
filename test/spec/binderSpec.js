@@ -1,5 +1,5 @@
 /* global describe, it, expect, app */
-describe('実行コンテキストを強制する', function() {
+xdescribe('実行コンテキストを強制する', function() {
   'use strict';
   it('bind関数', function() {
     // オブジェクトの準備
