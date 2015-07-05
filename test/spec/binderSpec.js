@@ -4,7 +4,7 @@ describe('実行コンテキストを強制する', function() {
   it('bind関数', function() {
     var targetObj = {
       str: 'targetObj',
-      targetFunction: function() {
+      fn: function() {
         return this.str;
       }
     };
@@ -15,24 +15,17 @@ describe('実行コンテキストを強制する', function() {
       str: 'obj2'
     };
 
-    obj1.targetFunction = targetObj.targetFunction;
+    obj1.fn = targetObj.fn;
 
-    expect(obj1.targetFunction()).toBe('obj1');
-    expect(targetObj.targetFunction()).toBe('targetObj');
+    expect(obj1.fn()).toBe('obj1');
+    expect(targetObj.fn()).toBe('targetObj');
 
-    app.bind(targetObj, 'targetFunction');
+    app.bind(targetObj, 'fn');
 
-    obj2.targetFunction = targetObj.targetFunction;
-    expect(obj1.targetFunction()).toBe('obj1');
-    expect(obj2.targetFunction()).toBe('targetObj');
-    expect(targetObj.targetFunction()).toBe('targetObj');
-  });
-
-  it('即時実行', function() {
-    (function () {
-      console.log('aaaaaaaaaaa');
-    });
-
+    obj2.fn = targetObj.fn;
+    expect(obj1.fn()).toBe('obj1');
+    expect(obj2.fn()).toBe('targetObj');
+    expect(targetObj.fn()).toBe('targetObj');
   });
 
 });

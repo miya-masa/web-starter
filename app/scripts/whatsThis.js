@@ -5,5 +5,6 @@
   app.whatsThis = function() {
     return this;
   };
+
   window.app = app;
 })(window);
