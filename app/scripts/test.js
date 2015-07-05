@@ -9,12 +9,14 @@
   Test.prototype.hello = function() {
     console.log('Hello ' + this.name + '!!!');
   };
+
+  //1 から maxNumまでを足す
   Test.prototype.sum = function() {
     var sum = 0;
     for (var i = 1; i <= this.maxNum; i++) {
       sum += i;
     }
-    console.log(sum);
+    return sum;
   };
 
   app.Test = Test;
