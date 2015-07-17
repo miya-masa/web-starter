@@ -1,6 +1,7 @@
 /* global describe, it, expect */
 describe('変数のスコープを知る', function() {
   'use strict';
+
   it('グローバルスコープを確認する', function() {
     expect(globalScope()).toBe(false);
     expect(otherGlobalScope()).toBe(false);
