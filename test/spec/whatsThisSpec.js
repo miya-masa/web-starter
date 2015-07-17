@@ -19,6 +19,7 @@ describe('WhatsThis', function() {
     expect(whatsThis2).toBe(undefined);
     expect(whatsThis3).toBe(obj);
     expect(whatsThis4).toBe(undefined);
+
   });
 
   it('callとapply', function() {
@@ -33,14 +34,12 @@ describe('WhatsThis', function() {
 
   it('インスタンスのthis', function() {
 
-    var MyClass = function() {
-      this.myObj = 'myObj';
-    };
+    var MyClass = function() {};
     MyClass.prototype.whatsThis = function() {
       return this;
     }
     var otherObj = {
-      otherObj : 'otherObj'
+      otherObj: 'otherObj'
     };
 
     var myObj = new MyClass();

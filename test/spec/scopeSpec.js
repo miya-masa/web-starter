@@ -3,7 +3,9 @@ describe('変数のスコープを知る', function() {
   'use strict';
 
   it('グローバルスコープを確認する', function() {
+    // 定義された関数で見えるか
     expect(globalScope()).toBe(false);
+    // 他の関数でもグローバルスコープが見えるか
     expect(otherGlobalScope()).toBe(false);
   });
 
@@ -29,6 +31,16 @@ describe('変数のスコープを知る', function() {
   });
 
   it('ホイスティングの確認', function() {
+    var fn = function(variable) {
+      expect(variable).toBe('variable');
+      var variable = 'innerVariable';
+      console.log(variable);
+      expect(variable).toBe('innerVariable');
+    };
+    fn('variable');
+  });
+
+  it('ホイスティングの確認(クロージャ)', function() {
     var variable = 'variable';
     var fn = function() {
       expect(variable).toBe(undefined);
@@ -37,16 +49,6 @@ describe('変数のスコープを知る', function() {
       expect(variable).toBe('innerVariable');
     };
     fn();
-  });
-
-  it('ホイスティングの確認', function() {
-    var fn = function(variable) {
-      expect(variable).toBe('variable');
-      var variable = 'innerVariable';
-      console.log(variable);
-      expect(variable).toBe('innerVariable');
-    };
-    fn('variable');
   });
 
 });
