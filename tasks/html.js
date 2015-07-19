@@ -4,7 +4,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-gulp.task('html', ['styles'], function() {
+gulp.task('html', function() {
   var assets = $.useref.assets({
     searchPath: ['.tmp', 'app', '.']
   });

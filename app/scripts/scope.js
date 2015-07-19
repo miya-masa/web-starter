@@ -4,6 +4,10 @@
 var globalOrLocal;
 var test = 'test';
 
+function whatIsGlobalThis() {
+  return this === window;
+}
+
 //グローバルスコープが関数の中で見えるか
 function globalScope() {
   return _.isUndefined(test);

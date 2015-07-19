@@ -5,18 +5,18 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
-gulp.task('serve', ['styles', 'fonts'], function() {
+gulp.task('serve', function() {
   browserSync({
     notify: false,
     port: 9000,
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
-        '/bower_components': 'bower_components',
         '/node_modules': 'node_modules',
       }
     }
   });
+
 
   // watch for changes
   gulp.watch([
@@ -25,8 +25,14 @@ gulp.task('serve', ['styles', 'fonts'], function() {
     'app/images/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', reload);
+});
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+gulp.task('serve:dist', ['build'], function() {
+  browserSync({
+    notify: false,
+    port: 9000,
+    server: {
+      baseDir: ['dist']
+    }
+  });
 });

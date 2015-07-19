@@ -1,6 +1,7 @@
 /* global describe, it, expect,app */
 xdescribe('WhatsThis', function() {
   'use strict';
+
   it('thisとはなんでしょうか？', function() {
     var whatsThis = app.whatsThis;
     var obj = {};

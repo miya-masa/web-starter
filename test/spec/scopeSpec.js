@@ -1,6 +1,7 @@
 /* global describe, it, expect */
 xdescribe('変数のスコープを知る', function() {
   'use strict';
+
   it('グローバルスコープを確認する', function() {
     // 定義された関数で見えるか
     expect(globalScope()).toBe(/* Question */);

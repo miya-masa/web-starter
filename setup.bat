@@ -2,8 +2,8 @@
 pushd %0\..
 cls
 
-npm -g install gulp bower
-npm install
-bower install
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+cinst packages.config
 
 pause
