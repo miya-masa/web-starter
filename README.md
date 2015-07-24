@@ -4,15 +4,33 @@
 
 #### for Windows
 
-1. setup.batを **管理者として実行** する
+> インストールにChocolateyというWindowsパッケージ管理のソフトウェアを利用する。
+> インストールしたくない場合はotherを参照すること
+
+
+1. setup.batを右クリックし **管理者として実行** する
+1. コマンドプロンプトを開きこのディレクトリまで移動
+1. 以下のコマンドを実行
+```
+  npm -g install gulp
+  npm install 
+```
 
 #### other
 
 1. nodejsをインストール
-1. npm -g install gulp bower
-1. npm install
-1. bower install
+https://nodejs.org/
+1. python2.x系をインストール
+https://www.python.org/downloads/
+1. コマンドプロンプトを開きこのディレクトリまで移動
+1. 以下のコマンドを実行(npm install中にエラーが出ても無視)
+```
+  npm -g install gulp
+  npm install 
+```
 
 #### 確認
 
-1. gulp karma を実行
+1. gulp karma を実行し、Chromeが立ち上がったらOK(Chromeはインストールされている前提です。。。)
+
+> gulpコマンドが見つからない場合は一度コマンドプロンプトを立ち上げ直して再度行う
