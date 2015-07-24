@@ -2,7 +2,10 @@
   'use strict';
   var app = window.app || {};
   app.bind = function(context, fnName) {
-    /* Question */
+    var org = context[fnName];
+    context[fnName] = function() {
+      return org.apply(context);
+    };
   };
   window.app = app;
 })(window);

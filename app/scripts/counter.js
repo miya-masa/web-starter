@@ -3,7 +3,11 @@
   var app = window.app || {};
   //カウンタを実装する
   app.getCounter = function() {
-    /* Question */
+    var num = 0;
+    return function() {
+      num += 1;
+      return num;
+    };
   };
   window.app = app;
 })(window);
