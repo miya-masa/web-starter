@@ -23,7 +23,7 @@ https://nodejs.org/
 1. python2.x系をインストール
 https://www.python.org/downloads/
 1. コマンドプロンプトを開きこのディレクトリまで移動
-1. 以下のコマンドを実行
+1. 以下のコマンドを実行(npm install中にエラーが出ても無視)
 ```
   npm -g install gulp
   npm install 
