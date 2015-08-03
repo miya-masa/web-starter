@@ -1,5 +1,5 @@
 /* global describe, it, expect */
-xdescribe('実行コンテキストを強制する', function() {
+describe('実行コンテキストを強制する', function() {
   'use strict';
   it('wrap関数', function() {
     var measure = function(orgFunc) {

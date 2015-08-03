@@ -1,5 +1,5 @@
 /* global describe, it, expect,app */
-xdescribe('WhatsThis', function() {
+describe('WhatsThis', function() {
   'use strict';
 
   it('thisとはなんでしょうか？', function() {
@@ -15,10 +15,10 @@ xdescribe('WhatsThis', function() {
     var whatsThis2 = whatsThis();
     var whatsThis3 = obj.whatsThis();
     var whatsThis4 = whats();
-    expect(whatsThis1).toBe(/* Question */);
-    expect(whatsThis2).toBe(/* Question */);
-    expect(whatsThis3).toBe(/* Question */);
-    expect(whatsThis4).toBe(/* Question */);
+    expect(whatsThis1).toBe(app);
+    expect(whatsThis2).toBe(undefined);
+    expect(whatsThis3).toBe(obj);
+    expect(whatsThis4).toBe(undefined);
 
   });
 
@@ -29,8 +29,8 @@ xdescribe('WhatsThis', function() {
     var whatsThis1 = whatsThis.call(otherObj)
     var whatsThis2 = whatsThis.apply(otherObj)
 
-    expect(whatsThis1).toBe(/* Question */);
-    expect(whatsThis2).toBe(/* Question */);
+    expect(whatsThis1).toBe(otherObj);
+    expect(whatsThis2).toBe(otherObj);
   });
 
   it('インスタンスのthis', function() {
@@ -44,8 +44,8 @@ xdescribe('WhatsThis', function() {
     };
 
     var myObj = new MyClass();
-    expect(myObj.whatsThis()).toBe(/* Question */);
-    expect(myObj.whatsThis.call(otherObj)).toBe(/* Question */);
+    expect(myObj.whatsThis()).toBe(myObj);
+    expect(myObj.whatsThis.call(otherObj)).toBe(otherObj);
   });
 
 });
